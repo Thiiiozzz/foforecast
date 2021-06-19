@@ -10,7 +10,7 @@ jobs:
       matrix:
         python-version: [ 3.8 ]
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🎉 Running CI jobs trigger by ${{ github.event_name }} event 🎉"
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Set up Python
@@ -23,18 +23,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements_dev.txt
       - name: Run black check
-          working-directory: ./crawlers
-          run: |
-            black --check foforecast_crawlers
+        working-directory: ./crawlers
+        run: |
+          black --check foforecast_crawlers
       - name: Run flake8 check
-          working-directory: ./crawlers
-          run: |
-            flake8 foforecast_crawlers
+        working-directory: ./crawlers
+        run: |
+          flake8 foforecast_crawlers
       - name: Run mypy check
-          working-directory: ./crawlers
-          run: |
-            mypy  foforecast_crawlers
+        working-directory: ./crawlers
+        run: |
+          mypy  foforecast_crawlers
       - name: Launch Tests
-          working-directory: ./crawlers
-          run: |
-            pytest
+        working-directory: ./crawlers
+        run: |
+          pytest
